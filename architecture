@@ -1,0 +1,13 @@
+Private EC2 Instance  --->  S3 Bucket (via VPC Endpoint)
+                                   │
+                                   ▼
+                            S3 Event Trigger
+                                   │
+                                   ▼
+                           AWS Lambda Function
+                                   │
+                                   ▼
+                           Amazon SNS Topic
+                                   │
+                                   ▼
+                           Email Notification
