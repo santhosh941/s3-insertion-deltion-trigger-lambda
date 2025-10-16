@@ -1,0 +1,47 @@
+Workflow Steps
+
+EC2 Instance (Private Subnet) uploads or deletes objects in the S3 bucket using the VPC Endpoint, without internet access.
+
+S3 Bucket is configured with event notifications to trigger a Lambda function on object creation or deletion.
+
+The Lambda function captures event details (file name, bucket, action type, etc.).
+
+Lambda publishes this event information to an Amazon SNS topic.
+
+SNS sends an email notification to the subscribed user with the event details.
+
+All communication happens securely inside the VPC, ensuring no data exposure to the public internet.
+
+IAM roles and policies are applied following the principle of least privilege.
+
+The entire workflow is serverless, automated, and cost-optimized.
+
+🧰 Technologies Used
+
+Amazon EC2 – Used as a private compute instance to upload/delete files securely.
+
+Amazon S3 – Stores objects and triggers Lambda on file changes.
+
+AWS Lambda – Processes S3 events and invokes SNS notifications.
+
+Amazon SNS (Simple Notification Service) – Sends real-time email alerts.
+
+VPC Endpoint for S3 – Enables secure, private connectivity between EC2 and S3 without internet exposure.
+
+IAM Roles & Policies – Provide fine-grained, least-privilege access control.
+
+AWS CloudWatch Logs – Monitors Lambda executions and event activity.
+
+🌟 Key Features
+
+✅ Fully Secure Architecture: All communication stays within a private VPC, with no public internet access.
+
+⚡ Event-Driven Automation: Lambda automatically triggers upon any file upload or deletion in S3.
+
+📧 Instant Notifications: Real-time email alerts for every S3 event via Amazon SNS.
+
+🧱 Modular & Scalable: Can easily extend to multiple buckets, users, or notification types.
+
+🧩 Serverless and Cost-Efficient: Uses pay-per-use AWS services, eliminating infrastructure overhead.
+
+🔐 Best Security Practices: IAM least-privilege roles, no hardcoded credentials, and private data flow.
